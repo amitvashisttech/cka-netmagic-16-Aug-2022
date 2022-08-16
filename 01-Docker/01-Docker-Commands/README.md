@@ -89,3 +89,36 @@
    50  ls
    51  cd 01-Docker-Commands/
 ```
+
+
+```
+ 96  mkdir 02-DockerImages/apache -p
+   97  ls
+   98  cd 02-DockerImages/apache/
+   99  ls
+  100  vim Dockerfile
+  101  ls
+  102  docker build -t myapache .
+  103  docker images
+  104  docker inspect myapache
+  105  docker history myapache
+  106  docker run -d --name webserver-1 myapache
+  107  docker ps
+  108  docker inspect webserver-1
+  109  curl 172.17.0.6
+  110  docker run -d --name webserver-2 -p 8080:80 myapache
+  111  docker ps
+  112  netstat -tulnp
+  113  ls
+  114  cp -rf Dockerfile Dockerfile-Test
+  115  ls
+  116  vim Dockerfile-Test
+  117  docker build -t myapache -f Dockerfile-Test .
+  118  ls
+  119  cd ..
+  120  ls
+  121  cd ..
+  122  ls
+  123  cd 01-Docker-Commands/
+
+```
