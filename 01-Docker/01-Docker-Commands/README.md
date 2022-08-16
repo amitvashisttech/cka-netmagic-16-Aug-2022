@@ -37,8 +37,7 @@
    60  ls -ltr /var/lib/docker/
    61  ls -ltr /var/lib/docker/containers/
 ```
-
-er ps
+```
     2  docker ps -a
     3  docker ps
     4  docker ps -a
