@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: helloworld-2
+  name: helloworld-2-deployment
+  namespace: myspace
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: helloworld-2
+  template:
+    metadata:
+      labels:
+        app: helloworld-2
+    spec:
+      containers:
+      - image: amitvashist7/k8s-tiny-web
+        name: k8s-demo
+        ports:
+        - containerPort: 80
+          name: node-port
+        resources:
+          requests:
+            cpu: 100m
+            memory: 0.1Gi
+          limits:
+            cpu: 200m
+            memory: 0.2Gi
