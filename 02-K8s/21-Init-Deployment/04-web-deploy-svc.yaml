@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: initworld
+  name: web-deploy
+spec:
+  ports:
+  - port: 80
+    nodePort: 31002
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: initworld
+  type: NodePort
+status:
+  loadBalancer: {}

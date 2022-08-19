@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deploy
+  labels:
+    app: initworld
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: initworld
+  template:
+    metadata:
+      labels:
+        app: initworld
+    spec:
+      initContainers:
+      - name: init-myservice
+        image: busybox:1.28
+        command: ['sh', '-c', "cd /www; wget https://raw.githubusercontent.com/amitvashisttech/docker-images/main/01-SampleIndexfile/index.html;sleep 5"]
+        volumeMounts:
+        - name: cred-volume
+          mountPath: /www
+      containers:
+      - name: k8s-demo
+        image: amitvashist7/k8s-tiny-web
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: nodejs-port
+          containerPort: 80
+        volumeMounts:
+        - name: cred-volume
+          mountPath: /www
+      volumes:
+      - name: cred-volume
+        emptyDir: {}
