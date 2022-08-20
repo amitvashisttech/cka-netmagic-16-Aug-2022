@@ -1,5 +1,23 @@
 #### Second Part: Time for Restrictive Policy
 
+#### Prereq:
+
+#### Step 0: Enable PodSecurityPolicy Admission Controller:
+```sh
+nano /etc/kubernetes/manifests/kube-apiserver.yaml
+```
+```sh
+--enable-admission-plugins=PodSecurityPolicy
+```
+```sh
+watch kubectl get pods -n kube-system
+```
+
+
+
+
+
+
 #### Step 1 - Create Restrictive PSP:
 ```sh
 nano restrictive-psp.yaml
