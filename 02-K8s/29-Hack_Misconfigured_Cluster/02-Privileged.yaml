@@ -8,3 +8,5 @@ spec:
     name: demo-pod
     securityContext:
       privileged: true
+  nodeSelector:
+    kubernetes.io/hostname: worker1
